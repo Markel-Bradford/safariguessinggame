@@ -72,6 +72,7 @@ function WordGame() {
   return (
     <div>
       <div className="wordgame">
+      <img className="bg" src="/images/safarianimals.jpeg" />
         <h1 className="title">Animal Guessing Game</h1>
         <h2 className="subtitle">Do you know your safari animals?</h2>
         <div className="app-container">
