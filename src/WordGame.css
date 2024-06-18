@@ -90,7 +90,7 @@ text-align: center;
 
 .footerText {
   font-size: 18px;
-  color: yellow;
+  color: #fff;
 }
 
 @media screen and (max-width: 600px) {
