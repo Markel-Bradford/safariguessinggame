@@ -11,6 +11,8 @@ function WordGame() {
   const [currentGuess, setCurrentGuess] = useState(null);
   const [guessResponse, setGuessResponse] = useState(null);
   const [hint, setHint] = useState(null);
+  const [correctAnswer, setCorrectAnswer] = useState(null);
+  const guessInput = document.getElementById("guessInput");
 
   useEffect(() => {
     startNewGame();
@@ -27,6 +29,8 @@ function WordGame() {
       setCurrentGuess('');
       setGuessResponse(null);
       setHint(null);
+      setCorrectAnswer(null)
+      guessInput.disabled = false;
     } catch (error) {
       console.error("Error starting new game:", error.message);
     }
@@ -44,6 +48,7 @@ function WordGame() {
         game_over,
         correct_guess,
         hint,
+        correct_answer
       } = response.data;
 
       setHint(hint);
@@ -51,10 +56,16 @@ function WordGame() {
       setTurnsRemaining(turns_remaining);
       setGameOver(game_over);
       setGuessResponse(correct_guess ? "Congratulations! You win!!" : "Incorrect guess. Try again.");
+      setCorrectAnswer(correct_answer)
 
-      if (game_over) {
-        setGameOver("Game over. Better luck next time!");
+      if (correct_guess || game_over) {
+        setGameOver(correct_guess ? "Great Job!! Play again?" : `Game over! The answer was ${correct_answer}`);
+        guessInput.disabled = true;
       }
+
+      
+      
+      
     } catch (error) {
       console.error("Error making guess:", error.message);
     }
@@ -63,10 +74,11 @@ function WordGame() {
     setGuess('');
   };
 
+
   const handleKeyPress = (e) => {
     if(e.key === 'Enter' && guess.trim() !== '' && !gameOver) {
       makeGuess()
-    }
+    } 
   }
 
   return (
@@ -84,6 +96,7 @@ function WordGame() {
             <p>Current Guess : {currentGuess}</p>
           </div>
           <input
+            id="guessInput"
             type="text"
             placeholder={`Enter a ${wordLength} letter word`}
             value={guess}
@@ -93,7 +106,7 @@ function WordGame() {
           />
           {guessResponse && <div><p className="message">{guessResponse}</p></div>}
           <div className="button-container">
-            <button onClick={makeGuess} disabled={gameOver}>Make Guess</button>
+            <button id="makeGuessBtn" onClick={makeGuess} disabled={gameOver}>Make Guess</button>
             <button onClick={startNewGame}>New Game</button>
           </div>
         </div>
