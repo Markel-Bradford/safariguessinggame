@@ -70,7 +70,7 @@ function WordGame() {
   }
 
   return (
-    <div className="bg">
+    <div>
       <div className="wordgame">
         <h1 className="title">Animal Guessing Game</h1>
         <h2 className="subtitle">Do you know your safari animals?</h2>
@@ -98,6 +98,9 @@ function WordGame() {
         </div>
         {gameOver && <h2>{gameOver}</h2>} 
       </div>
+      <footer>
+      <p className="footerText">&copy; Markel Bradford 2024</p>
+      </footer>
     </div>
   );
 }
