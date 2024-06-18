@@ -12,12 +12,6 @@ function WordGame() {
   const [guessResponse, setGuessResponse] = useState(null);
   const [hint, setHint] = useState(null);
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && guess.trim() !== '') {
-      makeGuess();
-    }
-  };
-
   useEffect(() => {
     startNewGame();
   }, []);
@@ -30,9 +24,9 @@ function WordGame() {
       setTurnsRemaining(num_turns);
       setGameOver(false);
       setIncorrectWord([]);
-      setCurrentGuess(''); // Clear currentGuess when starting a new game
-      setGuessResponse(null); // Clear guessResponse when starting a new game
-      setHint(null); // Clear hint when starting a new game
+      setCurrentGuess('');
+      setGuessResponse(null);
+      setHint(null);
     } catch (error) {
       console.error("Error starting new game:", error.message);
     }
@@ -40,13 +34,9 @@ function WordGame() {
 
   const makeGuess = async () => {
     try {
-      const postData = {
-        guess: guess,
-      };
+      const postData = { guess: guess };
       const response = await axios.post("https://wg-flask-server.onrender.com/app/make_guess", postData, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
       });
       const {
         incorrect_word,
@@ -55,25 +45,29 @@ function WordGame() {
         correct_guess,
         hint,
       } = response.data;
-  
+
       setHint(hint);
       setIncorrectWord(incorrect_word);
       setTurnsRemaining(turns_remaining);
       setGameOver(game_over);
-  
-      // Update guess response in the state
       setGuessResponse(correct_guess ? "Congratulations! You win!!" : "Incorrect guess. Try again.");
-  
+
       if (game_over) {
         setGameOver("Game over. Better luck next time!");
       }
     } catch (error) {
       console.error("Error making guess:", error.message);
     }
-  
-    setCurrentGuess(guess); // Update currentGuess after making a guess
-    setGuess(''); // Clear the input after making a guess
+
+    setCurrentGuess(guess);
+    setGuess('');
   };
+
+  const handleKeyPress = (e) => {
+    if(e.key === 'Enter' && guess.trim() !== '' && !gameOver) {
+      makeGuess()
+    }
+  }
 
   return (
     <div className="bg">
@@ -84,9 +78,7 @@ function WordGame() {
           <p>Word Length: {wordLength}</p>
           <p>Turns Remaining: {turnsRemaining}</p>
           <div>
-            {hint && (
-              <p>Hint: {hint}</p>
-            )}
+            {hint && <p>Hint: {hint}</p>}
             <p>Incorrect words : [{incorrectWord.join(' ')}]</p>
             <p>Current Guess : {currentGuess}</p>
           </div>
@@ -95,14 +87,10 @@ function WordGame() {
             placeholder={`Enter a ${wordLength} letter word`}
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
-            onKeyDown={handleKeyPress} 
+            onKeyDown={handleKeyPress}
             disabled={gameOver}
           />
-          {guessResponse && (
-            <div>
-              <p className="message">{guessResponse}</p>
-            </div>
-          )}
+          {guessResponse && <div><p className="message">{guessResponse}</p></div>}
           <div className="button-container">
             <button onClick={makeGuess} disabled={gameOver}>Make Guess</button>
             <button onClick={startNewGame}>New Game</button>
