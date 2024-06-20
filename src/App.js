@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { signinAction, signupAction } from './actions/actions';
 import SignUp, { signupLoader } from './Components/SignUp';
 import SignIn, { signinLoader } from './Components/SignIn';
+import Error from './Pages/Error';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
         action: signinAction,
       }
     ]
+  },
+  ,
+  {
+    path: "*",
+    element: <Error />    
   }
 ]);
 

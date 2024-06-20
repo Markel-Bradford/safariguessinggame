@@ -1,0 +1,50 @@
+.error {
+    -ms-grid-row-align: center;
+    -ms-grid-column-align: center;
+    place-self: center;
+    display: -ms-grid;
+    display: grid;
+    place-items: center;
+    place-content: center;
+    gap: var(--space-lg);
+    padding-block: var(--space-lg);
+    text-align: center;
+    color: #ffffff;
+    height: 100vh;
+  }
+  
+  #err-message {
+    font-size: 32px;
+    margin-bottom: 75px;
+  }
+  
+  .btn--err {
+    background: black;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    transition: border-color 0.25s;
+    margin: 0 auto;
+    padding: 0rem .5rem;
+    height: 60px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: var(--space-xs);
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    cursor: pointer;
+  }
+  
+  
+  .btn--err:hover {
+    background: green;
+    color: #fff;
+  }
