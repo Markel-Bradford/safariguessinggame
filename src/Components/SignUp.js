@@ -18,7 +18,8 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSignup = async () => {
+  const handleSignup = async (e) => {
+    e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {

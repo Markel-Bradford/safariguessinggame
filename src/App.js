@@ -5,9 +5,9 @@ import Dashboard, { dashboardAction, dashboardLoader } from './Pages/Dashboard'
 import { logoutAction } from './actions/logout'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import { signupAction } from './actions/actions'
+import { signinAction, signupAction } from './actions/actions'
 import SignUp, { signupLoader } from './Components/SignUp'
-import SignIn from './Components/SignIn'
+import SignIn, { signinLoader } from './Components/SignIn'
 
 const router = createBrowserRouter([
     {
@@ -34,8 +34,8 @@ const router = createBrowserRouter([
               {
                 path: "signin",
                 element: <SignIn />,
-                loader: signupLoader,
-                action: signupAction
+                loader: signinLoader,
+                action: signinAction
               }
 
         ]

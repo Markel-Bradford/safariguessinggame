@@ -17,7 +17,7 @@ export async function signupAction({ request }) {
     return redirect("/"); // Redirect or any other necessary action
   } catch (error) {
     toast.error(`Error signing up: ${error.message}`);
-    return { error: error.message }; // Return an error message if needed
+    return null; // Ensure the function returns a value or null
   }
 }
 
@@ -32,6 +32,6 @@ export async function signinAction({ request }) {
     return redirect("/"); // Redirect or any other necessary action
   } catch (error) {
     toast.error(`Error signing in: ${error.message}`);
-    return { error: error.message }; // Return an error message if needed
+    return null; // Ensure the function returns a value or null
   }
 }
