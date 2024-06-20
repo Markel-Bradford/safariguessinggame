@@ -1,0 +1,14 @@
+.footer-container {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(/public/images/safarianimals.jpeg);
+    background-position: bottom;
+    border-top: #ffd700 solid 2px;
+}
+
+.footerText {
+    font-size: 18px;
+    color: yellow;
+  }

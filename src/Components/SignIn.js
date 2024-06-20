@@ -8,7 +8,6 @@ const SignIn = () => {
   
     return (
       <div className="container">
-      <img className="bg" src="/images/safarianimals.jpeg" />
         <div className="welcomeFormContainer">
           <ul id="welcome">
             <li>W</li>
@@ -20,9 +19,8 @@ const SignIn = () => {
             <li>e</li>
             <li>!</li>
           </ul>
-          <h1 id="welcome-mobile">Welcome!</h1>
           <Form className="signInForm" method="POST">
-            <h2 id="welcomeMessage">Sign in and let's get started!</h2>
+            <h2 id="welcomeMessage">Sign in to play!</h2>
             <input
               type="text"
               name="userName"

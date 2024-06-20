@@ -1,0 +1,73 @@
+.navbar {
+    background: url(/public/images/safarianimals.jpeg);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    font-family: "Kalnia", sans-serif;
+    border-bottom: #ffd700 solid 2px;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    max-width: 1500px;
+  }
+  
+  .nav-menu {
+    display: grid;
+    grid-gap: 10px;
+    list-style: none;
+    height: 40px;
+    text-align: center;
+    width: 60vw;
+    justify-content: end;
+  }
+  
+  .nav-item {
+    height: 80px;
+  }
+  
+  .btn {
+    background: rgba(255, 69, 0, .7);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0rem .5rem;
+    height: 100%;
+    border: solid 2px #fff;
+    border-radius: 12px;
+    font-size: 1rem;
+  }
+  
+  .btn:hover {
+    background-color: red;
+    color: var(--color);
+    border: black 2px solid;
+    transition: .8s;
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .NavbarItems {
+      position: relative;
+    }
+  
+    .btn {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-right: 15px;
+      height: 50px;
+      margin-top: 15px;
+    }
+  
+  }
+  
