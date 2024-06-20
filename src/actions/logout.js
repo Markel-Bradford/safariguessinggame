@@ -1,26 +1,15 @@
-import { redirect } from "react-router-dom";
-import { deleteItem } from "../helpers";
-//toast library
+import { signOut } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 import { toast } from "react-toastify";
-import { signOut } from 'firebase/auth';
-import { auth } from '../firebaseConfig';
-
+import { redirect } from "react-router-dom";
 
 export async function logoutAction() {
-    try {
-        // Sign out the user
-        await signOut(auth);
-
-        deleteItem({key: "userName"})
-
-        toast.success("You've successfully logged out!")
-
-        return redirect("/signin")
-
-    }
-    catch (error) {
-    //return redirect
-    toast.error(`Error logging out: ${error.message}`)
-    return redirect("/dashboard")
-}
+  try {
+    await signOut(auth);
+    toast.success("You've successfully logged out!");
+    return redirect("/signin"); // Redirect to the sign-in page after logging out
+  } catch (error) {
+    toast.error(`Error logging out: ${error.message}`);
+    return redirect("/dashboard"); // Redirect to dashboard if there's an error
+  }
 }
