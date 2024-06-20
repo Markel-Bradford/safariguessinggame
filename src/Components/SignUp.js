@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-import { Form, NavLink } from "react-router-dom";
+import { Form, NavLink, useNavigate } from "react-router-dom";
 import { UserPlusIcon } from "@heroicons/react/24/solid";
 import './SignIn.css';
 
@@ -17,11 +18,13 @@ export function signupLoader() {
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+      navigate("/"); // Redirect to the dashboard or game screen
     } catch (error) {
       console.error("Error signing up: ", error);
     }

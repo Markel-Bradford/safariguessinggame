@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, Form } from "react-router-dom";
+import { NavLink, Form, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import "./SignIn.css";
@@ -16,11 +16,13 @@ export function signinLoader() {
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      navigate("/"); // Redirect to the dashboard or game screen
     } catch (error) {
       console.log("Error signing in: ", error);
     }
@@ -39,7 +41,7 @@ const SignIn = () => {
           <li>e</li>
           <li>!</li>
         </ul>
-        <Form className="signInForm" method="POST" action="/signin" onSubmit={handleSignIn}>
+        <form className="signInForm" method="POST" onSubmit={handleSignIn}>
           <h2 id="welcomeMessage">Sign in to play!</h2>
           <input
             type="email"
@@ -64,7 +66,7 @@ const SignIn = () => {
           <NavLink to="/signup">
             <p className="signUpLink">Don't have an account? Click here to sign up!</p>
           </NavLink>
-        </Form>
+        </form>
       </div>
     </div>
   );
