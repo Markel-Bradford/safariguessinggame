@@ -29,13 +29,6 @@ export async function dashboardAction({ request }) {
 
 const Dashboard = () => {
     const { user } = useLoaderData();
-    const [userData, setUserData] = useState(null)
-
-    useEffect(() => {
-        if (user) {
-            setUserData(user);
-        }
-    }, [user])
   
     return (
     <div>
