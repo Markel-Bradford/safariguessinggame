@@ -2,10 +2,10 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-// Serve static files from the React app
+// Serve static files from the React app's build directory
 app.use(express.static(path.join(__dirname, 'build')));
 
-// Handle all routes and serve the index.html file
+// Handle all routes by serving the index.html file
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
