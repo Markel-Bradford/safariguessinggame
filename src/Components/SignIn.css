@@ -2,11 +2,11 @@
 
 .container {
   display: flex;
+  height: 100vh;
   background: url(/public/images/orange.jpeg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 100vh;
 }
 
 #welcome {
@@ -98,6 +98,7 @@
   max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
+  padding: 15px;
 }
 
 .submitbutton:hover {
@@ -130,6 +131,12 @@
   #welcome li {
     font-size: 60px;
   }
+
+  #password,
+#userName,
+#email { 
+    width: 98%;
+}
 }
 
 @media screen and (max-width: 1440px) {
@@ -140,17 +147,6 @@
     width: 100%;
     align-items: center;
     justify-content: center;
-  }
-
-  .welcomeImgContainer {
-    margin: 0 auto;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .welcome-img {
-    max-width: 500px;
   }
 
   #welcomeMessage {

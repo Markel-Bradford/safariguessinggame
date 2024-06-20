@@ -1,5 +1,5 @@
 :root {
-  background: url(/public/images/safarianimals.jpeg);
+  background: url(/public/images/orange.jpeg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -45,6 +45,10 @@ html, body {
 }
 
 main {
+  background: url(/public/images/safarianimals.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   height: 100vh;
 }
 

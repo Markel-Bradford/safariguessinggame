@@ -3,6 +3,7 @@ import { NavLink, Form, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import "./SignIn.css";
+import { CheckIcon } from "@heroicons/react/24/solid";
 
 // SignIn Loader
 export function signinLoader() {
@@ -62,6 +63,7 @@ const SignIn = () => {
           />
           <button type="submit" className="submitbutton">
             Sign In
+            <CheckIcon width={20} />
           </button>
           <NavLink to="/signup">
             <p className="signUpLink">Don't have an account? Click here to sign up!</p>
