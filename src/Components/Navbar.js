@@ -9,7 +9,7 @@ const Navbar = ({ user }) => {
         <div className="navbar-container">
           <ul className="nav-menu">
             <li>
-              {user && (
+              {user ? (
                 <Form method="post" action="/logout" onSubmit={(event) => {
                   if (!window.confirm("Log out?")) {
                     event.preventDefault();
@@ -19,7 +19,7 @@ const Navbar = ({ user }) => {
                     <span>Log out</span>
                   </button>
                 </Form>
-              )}
+              ) : null }
             </li>
           </ul>
         </div>

@@ -1,9 +1,5 @@
 :root {
-  background: url(/public/images/orange.jpeg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-
+  
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -42,13 +38,14 @@ html, body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-main {
   background: url(/public/images/safarianimals.jpeg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
+}
+
+main {
   height: 100vh;
 }
 
