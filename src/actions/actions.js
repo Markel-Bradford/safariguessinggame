@@ -14,7 +14,7 @@ export async function signupAction({ request }) {
   try {
     await createUserWithEmailAndPassword(auth, email, password);
     toast.success("Account created successfully! Redirecting to game...");
-    return redirect("/"); // Redirect or any other necessary action
+    return redirect("/dashboard"); // Redirect or any other necessary action
   } catch (error) {
     toast.error(`Error signing up: ${error.message}`);
     return { error: error.message }; // Return an error message if needed
@@ -29,7 +29,7 @@ export async function signinAction({ request }) {
   try {
     await signInWithEmailAndPassword(auth, email, password);
     toast.success("Signed in successfully! Redirecting to game...");
-    return redirect("/"); // Redirect or any other necessary action
+    return redirect("/dashboard"); // Redirect or any other necessary action
   } catch (error) {
     toast.error(`Error signing in: ${error.message}`);
     return { error: error.message }; // Return an error message if needed
