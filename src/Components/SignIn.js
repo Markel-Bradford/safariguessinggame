@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import { NavLink, Form } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import "./SignIn.css";
+
+// SignIn Loader
+export function signinLoader() {
+    return new Promise((resolve) => {
+        onAuthStateChanged(auth, (user) => {
+            resolve({user});
+        });
+    });
+  };
 
 const SignIn = () => {
   const [email, setEmail] = useState("");

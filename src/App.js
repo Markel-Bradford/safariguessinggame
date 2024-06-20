@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { signupAction } from './actions/actions'
 import SignUp, { signupLoader } from './Components/SignUp'
+import SignIn from './Components/SignIn'
 
 const router = createBrowserRouter([
     {
@@ -29,7 +30,14 @@ const router = createBrowserRouter([
                 element: <SignUp />,
                 loader: signupLoader,
                 action: signupAction
+              },
+              {
+                path: "signin",
+                element: <SignIn />,
+                loader: signupLoader,
+                action: signupAction
               }
+
         ]
     }
 ])
