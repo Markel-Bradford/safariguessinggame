@@ -41,7 +41,7 @@ const SignUp = () => {
           <li>e</li>
           <li>!</li>
         </ul>
-        <Form className="signInForm" method="POST" onSubmit={handleSignup}>
+        <Form className="signInForm" method="POST" action="/signup" onSubmit={handleSignup}>
           <h2 id="welcomeMessage">Sign up to play!</h2>
           <input
             type="email"

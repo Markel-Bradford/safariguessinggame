@@ -40,7 +40,7 @@ const SignIn = () => {
           <li>e</li>
           <li>!</li>
         </ul>
-        <Form className="signInForm" method="POST" onSubmit={handleSignIn}>
+        <Form className="signInForm" method="POST" action="/signin" onSubmit={handleSignIn}>
           <h2 id="welcomeMessage">Sign in to play!</h2>
           <input
             type="email"
