@@ -21,7 +21,6 @@
   },
   "scripts": {
     "start": "node server.js",
-    "predeploy": "npm run build",
     "build": "react-scripts build",
     "serve": "serve -s build",
     "test": "react-scripts test",
