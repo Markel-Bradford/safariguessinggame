@@ -1,0 +1,33 @@
+/*Dashboard CSS*/
+
+.dashboard {
+  display: -ms-grid;
+  display: grid;
+  gap: var(--space-lg);
+  width: 100%;
+  place-items: start;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.welcome {
+  color: #fff;
+  text-align: left;
+  margin-left: 100px;
+  margin-top: 80px;
+  margin-bottom: 10px;
+  animation: 3s fadein;
+}
+
+#getstarted {
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 600px) {
+  .welcome {
+    margin-left: 0;
+    text-align: center;
+    font-size: 2.8em;
+  }
+}

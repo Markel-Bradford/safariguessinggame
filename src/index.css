@@ -1,3 +1,36 @@
+:root {
+  background: linear-gradient(90deg, #333 0%, #000 100%);;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* toast customizations */
+  --toastify-color-success: #8be8cc;
+
+  /* utils */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 40px;
+  --content-sm: 40ch;
+  --content: 60ch;
+  --round-sm: 4px;
+  --round-md: 10px;
+  --round-lg: 25px;
+  --round-full: 100vmax;
+  --lh-1: 1;
+
+  /*color*/
+  --accent: 183 74% 44%;
+  --bkg: 190 60% 98%;
+}
+
 html, body {
   margin: 0;
   padding: 0;
