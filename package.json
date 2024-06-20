@@ -1,6 +1,6 @@
 {
   "name": "safariguessinggame",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "private": true,
   "dependencies": {
     "@heroicons/react": "^2.1.4",
@@ -22,7 +22,6 @@
   "scripts": {
     "start": "node server.js",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "serve": "serve -s build",
     "test": "react-scripts test",
