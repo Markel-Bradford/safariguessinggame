@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { NavLink, Form } from "react-router-dom";
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import "./SignIn.css";
 
 // SignIn Loader
 export function signinLoader() {
-    return new Promise((resolve) => {
-        onAuthStateChanged(auth, (user) => {
-            resolve({user});
-        });
+  return new Promise((resolve) => {
+    onAuthStateChanged(auth, (user) => {
+      resolve({ user });
     });
-  };
+  });
+}
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -51,7 +52,7 @@ const SignIn = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-          id="password"
+            id="password"
             type="password"
             placeholder="Password"
             minLength={8}

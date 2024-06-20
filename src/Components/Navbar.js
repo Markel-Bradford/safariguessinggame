@@ -11,7 +11,7 @@ const Navbar = ({user}) => {
     <div className="navbar-container">
       <ul className="nav-menu">
       <li>
-       {user && (
+       {user ? (
           <Form method="post" action="/logout" onSubmit={(event) => {
             // eslint-disable-next-line no-restricted-globals
             if (!window.confirm("Log out?")) {
@@ -22,7 +22,9 @@ const Navbar = ({user}) => {
               <span>Log out</span>
             </button>
           </Form>
-        )} 
+        ) : (
+            <a href="/signin">Sign In</a>
+          )} 
         </li>
       </ul>
     </div>

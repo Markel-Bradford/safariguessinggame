@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { Form, NavLink } from "react-router-dom";
 import { UserPlusIcon } from "@heroicons/react/24/solid";
-import { onAuthStateChanged } from 'firebase/auth';
+import './SignIn.css';
 
 // SignUp Loader
 export function signupLoader() {
-    return new Promise((resolve) => {
-        onAuthStateChanged(auth, (user) => {
-            resolve({user});
-        });
+  return new Promise((resolve) => {
+    onAuthStateChanged(auth, (user) => {
+      resolve({ user });
     });
-  };
+  });
+}
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -44,7 +45,7 @@ const SignUp = () => {
           <h2 id="welcomeMessage">Sign up to play!</h2>
           <input
             type="email"
-            name="userName"
+            name="email"
             id="email"
             required
             placeholder="e.g. john.doe@gmail.com"
@@ -55,7 +56,7 @@ const SignUp = () => {
           <input
             id="password"
             type="password"
-            placeholder="Password: Please enter at least 8 characters"
+            placeholder="Password"
             minLength={8}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -66,7 +67,7 @@ const SignUp = () => {
             <UserPlusIcon width={20} />
           </button>
           <NavLink to="/signin">
-            <p className="signUpLink">Have an account? Click here to sign in!</p>
+            <p className="signUpLink">Have an account? Click here to sign in</p>
           </NavLink>
         </Form>
       </div>

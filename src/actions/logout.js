@@ -15,7 +15,7 @@ export async function logoutAction() {
 
         toast.success("You've successfully logged out!")
 
-        return redirect("/")
+        return redirect("/signin")
 
     }
     catch (error) {
