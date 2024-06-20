@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Main, { mainLoader } from './layouts/Main';
-import Dashboard, { dashboardAction, dashboardLoader } from './Pages/Dashboard';
+import Dashboard, { dashboardLoader, dashboardAction } from './Pages/Dashboard';
 import { logoutAction } from './actions/logout';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

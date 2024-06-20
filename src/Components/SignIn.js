@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Form } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { onAuthStateChanged } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import "./SignIn.css";
 
@@ -59,7 +58,6 @@ const SignIn = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <input type="hidden" name="_action" value="newUser" />
           <button type="submit" className="submitbutton">
             Sign In
           </button>

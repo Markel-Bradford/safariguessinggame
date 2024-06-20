@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { Form, NavLink } from "react-router-dom";
 import { UserPlusIcon } from "@heroicons/react/24/solid";
@@ -61,7 +60,6 @@ const SignUp = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <input type="hidden" name="_action" value="newUser" />
           <button type="submit" className="submitbutton">
             Create Account
             <UserPlusIcon width={20} />
