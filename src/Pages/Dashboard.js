@@ -25,14 +25,6 @@ export async function dashboardAction({ request }) {
     // Separates out the actions by the value to prevent repetively creating actions
     const { _action, ...values } = Object.fromEntries(data);
     //Stores the user input in the local storage
-    if (_action === "newUser") {
-      try {
-        localStorage.setItem("userName", JSON.stringify(values.userName));
-        return toast.success(`Welcome, ${values.userName}`);
-      } catch (e) {
-        throw new Error("There was a problem creating your account.");
-      }
-    }
 }
 
 const Dashboard = () => {
