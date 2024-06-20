@@ -12,10 +12,22 @@
     color: #ffffff;
     height: 100vh;
   }
-  
-  #err-message {
-    font-size: 32px;
-    margin-bottom: 75px;
+
+  .errorMsg {
+    margin-top: -100px;
+    font-size: 64px;
+    color: #000;
+  }
+
+  .errorBtnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  #backBtn {
+    padding: 1.9rem .75rem;
   }
   
   .btn--err {
@@ -28,7 +40,7 @@
     text-decoration: none;
     transition: border-color 0.25s;
     margin: 0 auto;
-    padding: 0rem .5rem;
+    padding: 0rem .75rem;
     height: 60px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -41,10 +53,17 @@
     max-width: -moz-fit-content;
     max-width: fit-content;
     cursor: pointer;
+    transition: .4s;
   }
   
   
   .btn--err:hover {
     background: green;
     color: #fff;
+  }
+
+  @media screen and (max-width: 600px) {
+    .errorMsg {
+        font-size: 40px;
+    }
   }
