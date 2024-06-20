@@ -18,7 +18,7 @@ const Main = () => {
 
   return (
     <div>
-      <Navbar user={user ? user.email : ""} />
+      <Navbar user={user} />
       <main>
         <Outlet />
       </main>
