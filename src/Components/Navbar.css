@@ -1,5 +1,4 @@
 .navbar {
-    background: url(/public/images/safarianimals.jpeg);
     height: 80px;
     display: flex;
     justify-content: center;
@@ -9,7 +8,6 @@
     top: 0;
     z-index: 999;
     font-family: "Kalnia", sans-serif;
-    border-bottom: #ffd700 solid 2px;
   }
   
   .navbar-container {
@@ -26,7 +24,7 @@
     list-style: none;
     height: 40px;
     text-align: center;
-    width: 60vw;
+    width: 90vw;
     justify-content: end;
   }
   
@@ -40,10 +38,10 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    padding: 0rem .5rem;
+    padding: .25rem .5rem;
     height: 100%;
     border: solid 2px #fff;
-    border-radius: 12px;
+    border-radius: 4px;
     font-size: 1rem;
   }
   
@@ -65,7 +63,7 @@
       top: 0;
       right: 0;
       margin-right: 15px;
-      height: 50px;
+      height: 30px;
       margin-top: 15px;
     }
   
