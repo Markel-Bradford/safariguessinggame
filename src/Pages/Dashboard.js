@@ -2,15 +2,20 @@ import React from 'react'
 import SignIn from '../Components/SignIn';
 import WordGame from '../WordGame';
 import { toast } from "react-toastify";
-import { fetchData, wait } from "../helpers";
+import { wait } from "../helpers";
 import { useLoaderData } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebaseConfig';
 import "./Dashboard.css"
 
 //Dashboard loader
 export function dashboardLoader() {
-    const userName = fetchData("userName");
-    return { userName };
-  }
+    return new Promise((resolve) => {
+        onAuthStateChanged(auth, (user) => {
+            resolve({user});
+        });
+    });
+  };
 
 // Actions
 export async function dashboardAction({ request }) {
@@ -31,12 +36,12 @@ export async function dashboardAction({ request }) {
 }
 
 const Dashboard = () => {
-    const { userName } = useLoaderData();
+    const { user } = useLoaderData();
   
     return (
     <div>
     {
-        userName ? (
+        user ? (
         <WordGame />
     ) : (
         <SignIn />

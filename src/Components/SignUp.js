@@ -1,18 +1,28 @@
 import React, { useState } from "react";
-import { NavLink, Form } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-import "./SignIn.css";
+import { Form, NavLink } from "react-router-dom";
+import { UserPlusIcon } from "@heroicons/react/24/solid";
+import { onAuthStateChanged } from 'firebase/auth';
 
-const SignIn = () => {
+// SignUp Loader
+export function signupLoader() {
+    return new Promise((resolve) => {
+        onAuthStateChanged(auth, (user) => {
+            resolve({user});
+        });
+    });
+  };
+
+const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSignIn = async () => {
+  const handleSignup = async () => {
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      console.log("Error signing in: ", error);
+      console.error("Error signing up: ", error);
     }
   };
 
@@ -29,19 +39,20 @@ const SignIn = () => {
           <li>e</li>
           <li>!</li>
         </ul>
-        <Form className="signInForm" method="POST" onSubmit={handleSignIn}>
-          <h2 id="welcomeMessage">Sign in to play!</h2>
+        <Form className="signInForm" method="POST" onSubmit={handleSignup}>
+          <h2 id="welcomeMessage">Sign up to play!</h2>
           <input
             type="email"
-            id="userName"
+            name="userName"
+            id="email"
             required
-            placeholder="e.g. jane.doe@gmail.com"
+            placeholder="e.g. john.doe@gmail.com"
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-          id="password"
+            id="password"
             type="password"
             placeholder="Password"
             value={password}
@@ -49,10 +60,11 @@ const SignIn = () => {
           />
           <input type="hidden" name="_action" value="newUser" />
           <button type="submit" className="submitbutton">
-            Sign In
+            Create Account
+            <UserPlusIcon width={20} />
           </button>
-          <NavLink to="/signup">
-            <p className="signUpLink">Don't have an account? Click here to sign up!</p>
+          <NavLink to="/signin">
+            <p className="signUpLink">Have an account? Click here to sign in!</p>
           </NavLink>
         </Form>
       </div>
@@ -60,4 +72,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

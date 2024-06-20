@@ -5,6 +5,8 @@ import Dashboard, { dashboardAction, dashboardLoader } from './Pages/Dashboard'
 import { logoutAction } from './actions/logout'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import { signupAction } from './actions/actions'
+import SignUp, { signupLoader } from './Components/SignUp'
 
 const router = createBrowserRouter([
     {
@@ -21,12 +23,19 @@ const router = createBrowserRouter([
             {
                 path: "logout",
                 action: logoutAction
+              },
+              {
+                path: "signup",
+                element: <SignUp />,
+                loader: signupLoader,
+                action: signupAction
               }
         ]
     }
 ])
 
 function App() {
+      
   return (
     <div>
       <RouterProvider router={router} />
