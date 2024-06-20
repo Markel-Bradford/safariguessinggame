@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData, Outlet } from "react-router-dom";
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
@@ -14,8 +14,17 @@ export function mainLoader() {
 }
 
 const Main = () => {
-    const { user } = useLoaderData();
-
+    // Listen to authentication changes and update user state
+    const { user: initialUser } = useLoaderData();
+    const [user, setUser] = useState(initialUser);
+  
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        setUser(user);
+      });
+  
+      return () => unsubscribe();
+    }, []);
   return (
     <div>
       <Navbar user={user} />
