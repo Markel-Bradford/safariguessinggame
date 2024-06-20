@@ -54,7 +54,8 @@ const SignUp = () => {
           <input
             id="password"
             type="password"
-            placeholder="Password"
+            placeholder="Password: Please enter at least 8 characters"
+            minLength={8}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

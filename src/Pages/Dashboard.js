@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SignIn from '../Components/SignIn';
 import WordGame from '../WordGame';
 import { toast } from "react-toastify";
@@ -29,6 +29,13 @@ export async function dashboardAction({ request }) {
 
 const Dashboard = () => {
     const { user } = useLoaderData();
+    const [userData, setUserData] = useState(null)
+
+    useEffect(() => {
+        if (user) {
+            setUserData(user);
+        }
+    }, [user])
   
     return (
     <div>
