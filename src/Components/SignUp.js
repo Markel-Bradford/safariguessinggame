@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { NavLink, useNavigate, useFetcher } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-import { Form, NavLink, useNavigate } from "react-router-dom";
 import { UserPlusIcon } from "@heroicons/react/24/solid";
 import './SignIn.css';
 
@@ -19,6 +19,19 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const fetcher = useFetcher();
+  const isSubmitting = fetcher.state === "submitting";
+
+  const formRef = useRef();
+  const focusRef = useRef();
+
+  useEffect(() => {
+    if (!isSubmitting) {
+      formRef.current.reset();
+    }
+  }, [isSubmitting]);
+
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -43,7 +56,7 @@ const SignUp = () => {
           <li>e</li>
           <li>!</li>
         </ul>
-        <Form className="signInForm" method="POST" action="/signup" onSubmit={handleSignup}>
+        <fetcher.Form className="signInForm" method="POST" action="/signup" onSubmit={handleSignup} ref={formRef}>
           <h2 id="welcomeMessage">Sign up to play!</h2>
           <input
             type="email"
@@ -54,23 +67,25 @@ const SignUp = () => {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            ref={focusRef}
           />
           <input
             id="password"
             type="password"
             placeholder="Password"
+            required
             minLength={8}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <button type="submit" className="submitbutton">
-            Create Account
+          {isSubmitting ? <span>Creating Account...</span> : <span>Create Account</span>}
             <UserPlusIcon width={20} />
           </button>
           <NavLink to="/signin">
             <p className="signUpLink">Have an account? Click here to sign in</p>
           </NavLink>
-        </Form>
+        </fetcher.Form>
       </div>
     </div>
   );

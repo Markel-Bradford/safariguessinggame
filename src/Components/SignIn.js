@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { NavLink, useNavigate, useFetcher } from "react-router-dom";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import "./SignIn.css";
@@ -18,6 +18,18 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const fetcher = useFetcher();
+  const isSubmitting = fetcher.state === "submitting";
+
+  const formRef = useRef();
+  const focusRef = useRef();
+
+  useEffect(() => {
+    if (!isSubmitting) {
+      formRef.current.reset();
+    }
+  }, [isSubmitting]);
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -42,7 +54,11 @@ const SignIn = () => {
           <li>e</li>
           <li>!</li>
         </ul>
-        <form className="signInForm" method="POST" onSubmit={handleSignIn}>
+        <fetcher.Form
+          className="signInForm"
+          method="POST"
+          onSubmit={handleSignIn}
+          ref={formRef}>
           <h2 id="welcomeMessage">Sign in to play!</h2>
           <input
             type="email"
@@ -52,6 +68,7 @@ const SignIn = () => {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            ref={focusRef}
           />
           <input
             id="password"
@@ -60,15 +77,21 @@ const SignIn = () => {
             minLength={8}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
-          <button type="submit" className="submitbutton">
-            Sign In
+          <button
+            type="submit"
+            className="submitbutton"
+            disabled={isSubmitting}>
+            {isSubmitting ? <span>Signing in...</span> : <span>Sign in</span>}
             <CheckIcon width={20} />
           </button>
           <NavLink to="/signup">
-            <p className="signUpLink">Don't have an account? Click here to sign up!</p>
+            <p className="signUpLink">
+              Don't have an account? Click here to sign up!
+            </p>
           </NavLink>
-        </form>
+        </fetcher.Form>
       </div>
     </div>
   );
