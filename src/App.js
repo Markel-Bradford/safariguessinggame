@@ -1,14 +1,19 @@
-import React from 'react';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Main, { mainLoader } from './layouts/Main';
-import Dashboard, { dashboardLoader, dashboardAction } from './Pages/Dashboard';
-import { logoutAction } from './actions/logout';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { signinAction, signupAction } from './actions/actions';
-import SignUp, { signupLoader } from './Components/SignUp';
-import SignIn, { signinLoader } from './Components/SignIn';
-import Error from './Pages/Error';
+import React from "react";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  useLocation,
+} from "react-router-dom";
+import Main, { mainLoader } from "./layouts/Main";
+import Dashboard, { dashboardLoader, dashboardAction } from "./Pages/Dashboard";
+import { logoutAction } from "./actions/logout";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { signinAction, signupAction } from "./actions/actions";
+import SignUp, { signupLoader } from "./Components/SignUp";
+import SignIn, { signinLoader } from "./Components/SignIn";
+import Error from "./Pages/Error";
+import { AnimatePresence } from "framer-motion";
 
 const router = createBrowserRouter([
   {
@@ -37,19 +42,27 @@ const router = createBrowserRouter([
         element: <SignIn />,
         loader: signinLoader,
         action: signinAction,
-      }
-    ]
+      },
+    ],
   },
   {
     path: "*",
-    element: <Error />
-  }
+    element: <Error />,
+  },
 ]);
 
 function App() {
+  const location = useLocation();
+
   return (
     <div>
-      <RouterProvider router={router} />
+      <AnimatePresence mode="wait">
+        <RouterProvider
+          router={router}
+          location={location}
+          key={location.pathname}
+        />
+      </AnimatePresence>
       <ToastContainer />
     </div>
   );
