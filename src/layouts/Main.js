@@ -4,7 +4,6 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import { motion } from "framer-motion";
 
 export function mainLoader() {
     return new Promise((resolve) => {
@@ -27,17 +26,13 @@ const Main = () => {
       return () => unsubscribe();
     }, []);
   return (
-    <motion.div
-    initial={{ width: 0 }}
-    animate={{ width: "100%", transition: { duration: 0.2 } }}
-    exit={{ x: window.innerWidth, transition: { duration: 0.2 } }}
-    >
+    <div>
       <Navbar user={user} />
       <main>
         <Outlet />
       </main>
       <Footer />
-    </motion.div>
+    </div>
   );
 };
 
