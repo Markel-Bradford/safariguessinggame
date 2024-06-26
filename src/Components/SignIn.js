@@ -45,11 +45,9 @@ const SignIn = () => {
   const handleGuestSignIn = async (e) => {
     e.preventDefault();
     try {
-        let guestEmail = "guest.player1086@gmail.com"
-        let guestPassword = "guestpass"
-        setEmail(guestEmail)
-        setPassword(guestPassword)
-        await signInWithEmailAndPassword(auth, email, password);
+        const guestEmail = "guest.player1086@gmail.com"
+        const guestPassword = "guestpass"
+        await signInWithEmailAndPassword(auth, guestEmail, guestPassword);
         navigate("/")
     } catch (error) {
         toast.error("Error signing in: ", error);
