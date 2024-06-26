@@ -38,21 +38,21 @@ const SignIn = () => {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/"); // Redirect to the dashboard or game screen
     } catch (error) {
-      toast.error("Error signing in: ", error);
+      toast.error(`Error signing in: ${error.message}`);
     }
   };
 
   const handleGuestSignIn = async (e) => {
     e.preventDefault();
     try {
-        const guestEmail = "guest.player1086@gmail.com"
-        const guestPassword = "guestpass"
-        await signInWithEmailAndPassword(auth, guestEmail, guestPassword);
-        navigate("/")
+      const guestEmail = "guest.player1086@gmail.com";
+      const guestPassword = "guestpass";
+      await signInWithEmailAndPassword(auth, guestEmail, guestPassword);
+      navigate("/");
     } catch (error) {
-        toast.error("Error signing in: ", error);
+      toast.error(`Error signing in: ${error.message}`);
     }
-  }
+  };
 
   return (
     <div className="container">
@@ -71,7 +71,8 @@ const SignIn = () => {
           className="signInForm"
           method="POST"
           onSubmit={handleSignIn}
-          ref={formRef}>
+          ref={formRef}
+        >
           <h2 id="welcomeMessage">Sign in to play!</h2>
           <input
             type="email"
@@ -93,19 +94,21 @@ const SignIn = () => {
             required
           />
           <div className="btn--container">
-          <button
-            type="submit"
-            className="submitbutton"
-            disabled={isSubmitting}>
-            {isSubmitting ? <span>Signing in...</span> : <span>Sign in</span>}
-            <CheckIcon width={20} />
-          </button>
-          <button
-            type="button"
-            className="submitbutton"
-            onClick={handleGuestSignIn}>
-            Guest Login
-          </button>
+            <button
+              type="submit"
+              className="submitbutton"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? <span>Signing in...</span> : <span>Sign in</span>}
+              <CheckIcon width={20} />
+            </button>
+            <button
+              type="button"
+              className="submitbutton"
+              onClick={handleGuestSignIn}
+            >
+              Guest Login
+            </button>
           </div>
           <NavLink to="/signup">
             <p className="signUpLink">

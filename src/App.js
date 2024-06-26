@@ -13,7 +13,6 @@ import { signinAction, signupAction } from "./actions/actions";
 import SignUp, { signupLoader } from "./Components/SignUp";
 import SignIn, { signinLoader } from "./Components/SignIn";
 import Error from "./Pages/Error";
-import { AnimatePresence } from "framer-motion";
 
 const router = createBrowserRouter([
   {
@@ -56,13 +55,11 @@ function App() {
 
   return (
     <div>
-      <AnimatePresence mode="wait">
         <RouterProvider
           router={router}
           location={location}
           key={location.pathname}
         />
-      </AnimatePresence>
       <ToastContainer />
     </div>
   );
