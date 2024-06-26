@@ -127,6 +127,13 @@
     color: green;
 }
 
+.btn--container {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media screen and (max-width: 600px) {
   .signInForm {
     max-width: 320px;
@@ -139,7 +146,7 @@
   #password,
 #userName,
 #email { 
-    width: 98%;
+    width: 96%;
 }
 }
 
