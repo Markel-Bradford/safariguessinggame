@@ -4,6 +4,7 @@ import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import "./SignIn.css";
 import { CheckIcon } from "@heroicons/react/24/solid";
+import { toast } from "react-toastify";
 
 // SignIn Loader
 export function signinLoader() {
@@ -37,9 +38,23 @@ const SignIn = () => {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/"); // Redirect to the dashboard or game screen
     } catch (error) {
-      console.log("Error signing in: ", error);
+      toast.error("Error signing in: ", error);
     }
   };
+
+  const handleGuestSignIn = async (e) => {
+    e.preventDefault();
+    try {
+        let guestEmail = "guest.player1086@gmail.com"
+        let guestPassword = "guestpass"
+        setEmail(guestEmail)
+        setPassword(guestPassword)
+        await signInWithEmailAndPassword(auth, email, password);
+        navigate("/")
+    } catch (error) {
+        toast.error("Error signing in: ", error);
+    }
+  }
 
   return (
     <div className="container">
@@ -79,6 +94,7 @@ const SignIn = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <div className="btn--container">
           <button
             type="submit"
             className="submitbutton"
@@ -86,6 +102,13 @@ const SignIn = () => {
             {isSubmitting ? <span>Signing in...</span> : <span>Sign in</span>}
             <CheckIcon width={20} />
           </button>
+          <button
+            type="button"
+            className="submitbutton"
+            onClick={handleGuestSignIn}>
+            Guest Login
+          </button>
+          </div>
           <NavLink to="/signup">
             <p className="signUpLink">
               Don't have an account? Click here to sign up!

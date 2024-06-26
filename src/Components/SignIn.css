@@ -127,6 +127,14 @@
     color: green;
 }
 
+.btn--container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+    gap: 15px;
+}
+
 @media screen and (max-width: 600px) {
   .signInForm {
     max-width: 320px;
