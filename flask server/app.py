@@ -14,7 +14,34 @@ def create_app():
 
 app = create_app()
 
-word_bank = ['lion','leopard','giraffe','elephant','hippo','cheetah','rhino','zebra','gorilla','baboon','monkey','gazelle','buffalo','hyena','crane','snake','warthog']
+word_bank = ['lion',
+'elephant',
+'giraffe',
+'zebra',
+'tiger',
+'hippo',
+'rhino',
+'gorilla',
+'crocodile',
+'cheetah',
+'leopard',
+'buffalo',
+'panther',
+'hyena',
+'ostrich',
+'baboon',
+'wildebeest',
+'gazelle',
+'antelope',
+'warthog',
+'flamingo',
+'vulture',
+'jackal',
+'meerkat',
+'mongoose',
+'aardvark',
+'porcupine',
+'lemur']
 num_turns = 5
 
 def generate_hint(word, incorrect_letter, correct_guesses):
